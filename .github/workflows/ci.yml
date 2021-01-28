@@ -23,10 +23,11 @@ jobs:
         channel: dev
     - run: cp example/lib/mapbox_api_key.dart.example example/lib/mapbox_api_key.dart # TODO: create secret
     - run: flutter config --enable-macos-desktop
-    - run: cd example
-    - run: flutter pub get
-    - run: flutter build ios --release --no-codesign
-    - run: flutter build macos --release --no-codesign
+    - run: |
+        cd example
+        flutter pub get
+        flutter build ios --release --no-codesign
+        flutter build macos --release --no-codesign
   linux:
     runs-on: ubuntu-latest
     steps:
@@ -37,13 +38,15 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         channel: dev
-    - run: flutter config --enable-web
-    - run: flutter config --enable-linux-desktop
-    - run: cd example
-    - run: flutter pub get
-    - run: flutter build web
-    - run: flutter build apk
-    - run: flutter build linux
+    - run: |
+        flutter config --enable-web
+        flutter config --enable-linux-desktop
+    - run: |
+        cd example
+        flutter pub get
+        flutter build web
+        flutter build apk
+        flutter build linux
   windows:
     runs-on: windows-latest
     steps:
@@ -55,6 +58,7 @@ jobs:
       with:
         channel: dev
     - run: flutter config --enable-windows-desktop
-    - run: cd example
-    - run: flutter pub get
-    - run: flutter build windows
+    - run: |
+        cd example
+        flutter pub get
+        flutter build windows
