@@ -2,9 +2,9 @@
 
 Demonstration of Flutter's map capabilities.
 
-## Getting Started
+![Demo Implementation](demo.gif)
 
-Please copy `mapbox_api_key.dart.example` to `mapbox_api_key.dart` and fill in your API key.
+## Getting Started
 
 Add the following to AndroidManifest.xml
 
@@ -18,4 +18,4 @@ Add the following to the Info.plist
 <string>This app needs access to location when open.</string>
 ```
 
-Register for the MapBox API, copy `mapbox_api_key.dart.example` to `mapbox_api_key.dart` and fill in your API key.
+Register for the MapBox API, copy `example/lib/mapbox_api_key.dart.example` to `yourproject/lib/mapbox_api_key.dart` and fill in your API key.
