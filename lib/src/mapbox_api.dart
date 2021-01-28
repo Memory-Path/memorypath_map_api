@@ -26,12 +26,13 @@ class MapBoxApi {
   MapBoxApi(this.apiKey);
 
   /// returns [MBDirections] of the given list of waypoints
+  /// https://docs.mapbox.com/api/navigation/directions/
   Future<MBDirections> directions(List<LatLng> points) async {
     final String waypoints = points
         .map((e) => e.longitude.toString() + ',' + e.latitude.toString())
         .join(';');
     final response = await get(
-        'https://api.mapbox.com/directions/v5/mapbox/walking/$waypoints?alternatives=false&geometries=geojson&steps=false&access_token=$apiKey');
+        'https://api.mapbox.com/directions/v5/mapbox/walking/$waypoints?alternatives=false&geometries=geojson&steps=false&overview=full&access_token=$apiKey');
     final json = jsonDecode(response.body);
     if (json['code'] != "Ok")
       throw "Error in MapBox API response:\n${response.body}";

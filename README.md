@@ -4,6 +4,8 @@ Demonstration of Flutter's map capabilities.
 
 ## Getting Started
 
+Please copy `mapbox_api_key.dart.example` to `mapbox_api_key.dart` and fill in your API key.
+
 Add the following to AndroidManifest.xml
 
 ```xml
