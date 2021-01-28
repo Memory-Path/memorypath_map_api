@@ -28,6 +28,12 @@ jobs:
         flutter pub get
         flutter build ios --release --no-codesign
         flutter build macos --release --no-codesign
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: macos-artifacts
+        path: |
+          example/build/macos
   linux:
     runs-on: ubuntu-latest
     steps:
@@ -51,6 +57,13 @@ jobs:
         flutter build web
         flutter build apk
         flutter build linux
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: linux-artifacts
+        path: |
+          example/build/linux/release/bundle
+          example/build/app/outputs/flutter-apk/app-release.apk
   windows:
     runs-on: windows-latest
     steps:
@@ -67,3 +80,9 @@ jobs:
         cd example
         flutter pub get
         flutter build windows
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: windows-artifacts
+        path: |
+          example/build/windows
