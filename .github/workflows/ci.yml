@@ -38,6 +38,7 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         channel: dev
+    - run: cp example/lib/mapbox_api_key.dart.example example/lib/mapbox_api_key.dart # TODO: create secret
     - run: |
         flutter config --enable-web
         flutter config --enable-linux-desktop
@@ -57,6 +58,7 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         channel: dev
+    - run: cp example/lib/mapbox_api_key.dart.example example/lib/mapbox_api_key.dart # TODO: create secret
     - run: flutter config --enable-windows-desktop
     - run: |
         cd example
