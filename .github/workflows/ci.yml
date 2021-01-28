@@ -23,6 +23,7 @@ jobs:
         channel: dev
     - run: cp example/lib/mapbox_api_key.dart.example example/lib/mapbox_api_key.dart # TODO: create secret
     - run: flutter config --enable-macos-desktop
+    - run: cd example
     - run: flutter pub get
     - run: flutter build ios --release --no-codesign
     - run: flutter build macos --release --no-codesign
@@ -38,6 +39,7 @@ jobs:
         channel: dev
     - run: flutter config --enable-web
     - run: flutter config --enable-linux-desktop
+    - run: cd example
     - run: flutter pub get
     - run: flutter build web
     - run: flutter build apk
@@ -53,4 +55,6 @@ jobs:
       with:
         channel: dev
     - run: flutter config --enable-windows-desktop
+    - run: cd example
+    - run: flutter pub get
     - run: flutter build windows
