@@ -14,8 +14,8 @@ Demonstration of Flutter's map capabilities.
 
 ```shell
 dartdoc
-# if dartdoc command is not found, use
-FLUTTER_ROOT=/path/to/flutter /path/to/flutter/bin/cache/dart-sdk/bin/dartdoc
+# If dartdoc command is not found, use install it using `flutter pub global activate dartdoc`. 
+# If still not available, update your path to include `$HOME/.pub-cache/bin` or use `flutter pub run dartdoc`. 
 xdg-open doc/api/index.html
 ```
 
