@@ -13,7 +13,7 @@ Demonstration of Flutter's map capabilities.
 ## API references
 
 ```shell
-dartdoc
+dartdoc # if dartdoc command is not found, use /path/to/flutter/bin/cache/dart-sdk/bin/dartdoc
 xdg-open doc/api/index.html
 ```
 
