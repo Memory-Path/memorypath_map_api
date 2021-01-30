@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   TextEditingController _newPOIController = TextEditingController();
 
-  GlobalKey<MapBoxState> mapKey = GlobalKey();
+  MapViewController controller = MapViewController();
 
   @override
   void initState() {
@@ -77,8 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: Theme.of(context).textTheme.headline5,
               ),
               Container(
-                child: MapBox(
-                  key: mapKey,
+                child: MapView(
+                  controller: controller,
                   onDirectionsUpdate: (newDirections) =>
                       setState(() => directions = newDirections),
                   onTap: (location) {
@@ -139,13 +139,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                               ));
                                                               _newPOIController
                                                                   .text = '';
-                                                              mapKey
-                                                                  .currentState
-                                                                  .setWaypoints(_waypoints
-                                                                      .map((e) =>
-                                                                          e.toMarker(
-                                                                              context: context))
-                                                                      .toList());
+                                                              controller.waypoints = _waypoints
+                                                                  .map((e) => e
+                                                                      .toMarker(
+                                                                          context:
+                                                                              context))
+                                                                  .toList();
                                                             });
                                                             Navigator.of(
                                                                     context)

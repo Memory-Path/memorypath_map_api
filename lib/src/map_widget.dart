@@ -11,34 +11,48 @@ typedef void MapTapCallback(LatLng coordinates);
 typedef void MBDirectionsCallback(MBDirections directions);
 
 /// Displays a map, allows editing of POIs and displays user's location
-class MapBox extends StatefulWidget {
+class MapView extends StatefulWidget {
+  /// the [MapViewController] for external control of the [MapView]
+  final MapViewController controller;
+
+  /// the initial waypoints displayed on the map. Can be modified by the controller later
   final List<Marker> waypoints;
+
+  /// a [MapTapCallback] handling any **single tap** on the map which is not a waypoint yet
   final MapTapCallback onTap;
+
+  /// a [MapTapCallback] handling any **long press** on the map which is not a waypoint yet
   final MapTapCallback onLongPress;
+
+  /// a [MBDirectionsCallback] providing the updated [MBDirections] to the parenting [Widget}
   final MBDirectionsCallback onDirectionsUpdate;
 
-  const MapBox(
+  const MapView(
       {Key key,
       this.waypoints = const [],
       this.onTap,
       this.onLongPress,
-      this.onDirectionsUpdate})
+      this.onDirectionsUpdate,
+      this.controller})
       : super(key: key);
   @override
-  MapBoxState createState() => MapBoxState();
+  _MapViewState createState() => _MapViewState();
 }
 
-class MapBoxState extends State<MapBox> with KeepAliveParentDataMixin {
+class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
   MapController mapController = MapController();
   UserLocationOptions userLocationOptions;
   List<Marker> locationMarkers = [];
   List<Marker> _waypoints;
 
+  // initially, no directions available, so no display
   bool displayDirections = false;
   MBDirections directions;
 
   @override
   void initState() {
+    // important: connects the current state to the controller
+    if (widget.controller != null) widget.controller._key = this;
     userLocationOptions = UserLocationOptions(
       context: context,
       mapController: mapController,
@@ -142,4 +156,32 @@ class MapBoxState extends State<MapBox> with KeepAliveParentDataMixin {
     final b = LatLng(highestLatitude, highestLongitude);
     return LatLngBounds(a, b);
   }
+}
+
+/// The [MapViewController] takes care of the communication with the [MapView]
+class MapViewController {
+  _MapViewState _globalKey;
+
+  /// sets the waypoints of the *memory path* on the map **and** recalculates the route in between
+  set waypoints(List<Marker> waypoints) => _globalKey.setWaypoints(waypoints);
+
+  /// fetches the current waypoints displayed on the map
+  List<Marker> get waypoints => _globalKey._waypoints;
+
+  /// called once by the [_MapViewState] we connect to
+  set _key(_MapViewState key) => _globalKey = key;
+
+  /// zooms to a certain [LatLng] at a given [double] zoom level
+  void zoomTo(LatLng location, double zoom) {
+    _globalKey.zoomTo(location, zoom);
+  }
+
+  /// checks whether directions are shown currently
+  bool get displayDirections => _globalKey.displayDirections;
+
+  /// enables or disables display of directions
+  set displayDirections(bool display) => _globalKey.displayDirections = display;
+
+  /// fetches the current directions in between the waypoints
+  MBDirections get directions => _globalKey.directions;
 }

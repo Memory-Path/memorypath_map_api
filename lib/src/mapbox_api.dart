@@ -5,25 +5,28 @@ import 'package:latlong/latlong.dart';
 
 /// draft of an implementation of the MapBox directions API
 ///
-/// Initialize by running `MapBoxApi.init(\"YOUR_API_KEY\");` in the main() function.
+/// Initialize by running `MapBoxApi.init("YOUR_API_KEY");` in the main() function.
 ///
 /// Access later by using `MapBoxApi.instance`.
 class MapBoxApi {
   static MapBoxApi _current;
 
+  /// initializes the [MapBoxApi] with the given API key
   static void init(String apiKey) {
-    _current = MapBoxApi(apiKey);
+    _current = MapBoxApi._(apiKey);
   }
 
+  /// returns the currently initialized [MapBoxApi] or throws an error if unavailable
   static MapBoxApi get instance {
     if (_current == null)
       throw "MapBoxApi not initialized yet.\nRun `MapBoxApi.init(\"YOUR_API_KEY\");` in the main() function.";
     return _current;
   }
 
+  /// the API key used for remote API calls
   final String apiKey;
 
-  MapBoxApi(this.apiKey);
+  MapBoxApi._(this.apiKey);
 
   /// returns [MBDirections] of the given list of waypoints
   /// https://docs.mapbox.com/api/navigation/directions/
