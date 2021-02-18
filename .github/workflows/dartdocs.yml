@@ -23,7 +23,7 @@ jobs:
         channel: dev
     - run: |
         flutter pub global activate dartdoc
-        dartdoc
+        FLUTTER_ROOT="${$(which flutter)%/bin/flutter}" dartdoc
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.0.0
       with:
