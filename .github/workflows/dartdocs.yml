@@ -23,7 +23,7 @@ jobs:
         channel: dev
     - run: |
         flutter pub global activate dartdoc
-        cat < EOF > temp.sh
+        cat << EOF > temp.sh
         echo "${$(which flutter)%/bin/flutter}"
         EOF
         FLUTTER_ROOT="$(bash temp.sh)" dartdoc
