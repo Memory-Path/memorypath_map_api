@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ map_widget_demo ]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -21,7 +21,9 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         channel: dev
-    - run: cp example/lib/mapbox_api_key.dart.example example/lib/mapbox_api_key.dart # TODO: create secret
+    - run: |
+        cp example/lib/mapbox_api_key.dart.example example/lib/mapbox_api_key.dart
+        sed -i "s/WHATEVER/$MAPBOX_API_KEY/g" example/lib/mapbox_api_key.dart
     - run: flutter config --enable-macos-desktop
     - run: |
         cd example
@@ -46,7 +48,9 @@ jobs:
     - run: |
         sudo apt update
         sudo apt install clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev
-    - run: cp example/lib/mapbox_api_key.dart.example example/lib/mapbox_api_key.dart # TODO: create secret
+    - run: |
+        cp example/lib/mapbox_api_key.dart.example example/lib/mapbox_api_key.dart
+        sed -i "s/WHATEVER/$MAPBOX_API_KEY/g" example/lib/mapbox_api_key.dart
     - run: |
         flutter config --enable-web
         flutter config --enable-linux-desktop
@@ -76,7 +80,9 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         channel: dev
-    - run: cp example/lib/mapbox_api_key.dart.example example/lib/mapbox_api_key.dart # TODO: create secret
+    - run: |
+        cp example/lib/mapbox_api_key.dart.example example/lib/mapbox_api_key.dart
+        ReplaceText "example/lib/mapbox_api_key.dart" WHATEVER %MAPBOX_API_KEY%
     - run: flutter config --enable-windows-desktop
     - run: |
         cd example
