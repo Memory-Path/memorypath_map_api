@@ -23,7 +23,10 @@ jobs:
         channel: dev
     - run: |
         flutter pub global activate dartdoc
-        FLUTTER_ROOT="${$(which flutter)%/bin/flutter}" dartdoc
+        cat < EOF > temp.sh
+        echo "${$(which flutter)%/bin/flutter}"
+        EOF
+        FLUTTER_ROOT="$(bash temp.sh)" dartdoc
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.0.0
       with:
