@@ -1,6 +1,6 @@
 # building Flutter application by Actions
 
-name: CI
+name: builder
 
 # Controls when the action will run. 
 on:
