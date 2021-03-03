@@ -71,8 +71,9 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
       options: MapOptions(
         onTap: widget.onTap,
         onLongPress: widget.onLongPress,
-        bounds:
-            LatLngBounds.fromPoints(_waypoints.map((e) => e.point)..toList()),
+        bounds: LatLngBounds.fromPoints(_waypoints.isNotEmpty
+            ? _waypoints.map((e) => e.point).toList()
+            : [LatLng(40, 3), LatLng(60, 25)]),
         boundsOptions: FitBoundsOptions(padding: EdgeInsets.all(32)),
         plugins: [
           UserLocationPlugin(),
