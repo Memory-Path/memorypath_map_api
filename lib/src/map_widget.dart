@@ -67,12 +67,12 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
 
   @override
   Widget build(BuildContext context) {
-    final LatLngBounds bounds = computeBounds();
     return FlutterMap(
       options: MapOptions(
         onTap: widget.onTap,
         onLongPress: widget.onLongPress,
-        bounds: bounds,
+        bounds:
+            LatLngBounds.fromPoints(_waypoints.map((e) => e.point)..toList()),
         boundsOptions: FitBoundsOptions(padding: EdgeInsets.all(32)),
         plugins: [
           UserLocationPlugin(),
@@ -135,27 +135,6 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
 
   @override
   bool get keptAlive => true;
-
-  LatLngBounds computeBounds() {
-    double lowestLatitude = _waypoints[0].point.latitude;
-    double lowestLongitude = _waypoints[0].point.longitude;
-    double highestLatitude = _waypoints[0].point.latitude;
-    double highestLongitude = _waypoints[0].point.longitude;
-    _waypoints.forEach((element) {
-      final location = element.point;
-      if (location.latitude < lowestLatitude)
-        lowestLatitude = location.latitude;
-      if (location.latitude > highestLatitude)
-        highestLatitude = location.latitude;
-      if (location.longitude < lowestLongitude)
-        lowestLongitude = location.longitude;
-      if (location.longitude > highestLongitude)
-        highestLongitude = location.longitude;
-    });
-    final a = LatLng(lowestLatitude, lowestLongitude);
-    final b = LatLng(highestLatitude, highestLongitude);
-    return LatLngBounds(a, b);
-  }
 }
 
 /// The [MapViewController] takes care of the communication with the [MapView]
