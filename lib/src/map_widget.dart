@@ -106,7 +106,7 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
       displayDirections = false;
       _waypoints = waypoints;
     });
-    if (_waypoints.isNotEmpty) calculateRoute();
+    if (_waypoints.length<=2) calculateRoute();
   }
 
   Future<void> calculateRoute() async {
