@@ -27,13 +27,17 @@ class MapView extends StatefulWidget {
   /// a [MBDirectionsCallback] providing the updated [MBDirections] to the parenting [Widget}
   final MBDirectionsCallback onDirectionsUpdate;
 
+  /// whether to show the *locate me* button
+  final bool showLocationButton;
+
   const MapView(
       {Key key,
       this.waypoints = const [],
       this.onTap,
       this.onLongPress,
       this.onDirectionsUpdate,
-      this.controller})
+      this.controller,
+      this.showLocationButton = true})
       : super(key: key);
   @override
   _MapViewState createState() => _MapViewState();
@@ -53,15 +57,16 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
   void initState() {
     // important: connects the current state to the controller
     if (widget.controller != null) widget.controller._key = this;
-    userLocationOptions = UserLocationOptions(
-      context: context,
-      mapController: mapController,
-      markers: locationMarkers,
-      updateMapLocationOnPositionChange: false,
-      zoomToCurrentLocationOnLoad: false,
-    );
+    if (widget.showLocationButton)
+      userLocationOptions = UserLocationOptions(
+        context: context,
+        mapController: mapController,
+        markers: locationMarkers,
+        updateMapLocationOnPositionChange: false,
+        zoomToCurrentLocationOnLoad: false,
+      );
     _waypoints = widget.waypoints;
-    if (_waypoints.isNotEmpty) calculateRoute();
+    if (_waypoints.length >= 2) calculateRoute();
     super.initState();
   }
 
@@ -76,7 +81,8 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
             : [LatLng(40, 3), LatLng(60, 25)]),
         boundsOptions: FitBoundsOptions(padding: EdgeInsets.all(32)),
         plugins: [
-          UserLocationPlugin(),
+          if (widget.showLocationButton) UserLocationPlugin(),
+          if (widget.showLocationButton) UserLocationPlugin(),
         ],
       ),
       layers: [
@@ -95,7 +101,7 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
           markers: _waypoints,
         ),
         MarkerLayerOptions(markers: locationMarkers),
-        userLocationOptions,
+        if (widget.showLocationButton) userLocationOptions,
       ],
       mapController: mapController,
     );
@@ -106,7 +112,7 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
       displayDirections = false;
       _waypoints = waypoints;
     });
-    if (_waypoints.length<=2) calculateRoute();
+    if (_waypoints.length <= 2) calculateRoute();
   }
 
   Future<void> calculateRoute() async {

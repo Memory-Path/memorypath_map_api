@@ -26,8 +26,8 @@ dependency_overrides:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
+
+  dartdoc: ^0.39.0
 
 flutter:
   uses-material-design: true
