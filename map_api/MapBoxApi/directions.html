@@ -71,8 +71,8 @@
   final String waypoints = points
       .map((e) =&gt; e.longitude.toString() + &#39;,&#39; + e.latitude.toString())
       .join(&#39;;&#39;);
-  final response = await get(
-      &#39;https:&#47;&#47;api.mapbox.com&#47;directions&#47;v5&#47;mapbox&#47;walking&#47;$waypoints?alternatives=false&amp;geometries=geojson&amp;steps=false&amp;overview=full&amp;access_token=$apiKey&#39;);
+  final response = await get(Uri.parse(
+      &#39;https:&#47;&#47;api.mapbox.com&#47;directions&#47;v5&#47;mapbox&#47;walking&#47;$waypoints?alternatives=false&amp;geometries=geojson&amp;steps=false&amp;overview=full&amp;access_token=$apiKey&#39;));
   final json = jsonDecode(response.body);
   if (json[&#39;code&#39;] != &quot;Ok&quot;)
     throw &quot;Error in MapBox API response:\n${response.body}&quot;;
