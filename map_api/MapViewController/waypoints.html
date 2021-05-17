@@ -7,6 +7,7 @@
   <meta name="description" content="API docs for the waypoints property from the MapViewController class, for the Dart programming language.">
   <title>waypoints property - MapViewController class - map_api library - Dart API</title>
 
+
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
@@ -15,7 +16,9 @@
   <link rel="stylesheet" href="../../static-assets/styles.css">
   <link rel="icon" href="../../static-assets/favicon.png">
 
+  
 </head>
+
 
 <body data-base-href="../../"
       data-using-base-href="false">
@@ -38,20 +41,77 @@
 
 <main>
 
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-property">waypoints</span> property 
+</h1></div>
+
+
+        
+<section id="getter">
+
+<section class="multi-line-signature">
+  <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/flutter_map/0.12.0/flutter_map.plugin_api/Marker-class.html">Marker</a></span>&gt;</span></span>
+  <span class="name ">waypoints</span>
+  
+
+</section>
+
+
+<section class="desc markdown">
+  <p>fetches the current waypoints displayed on the map</p>
+</section>
+
+
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">List&lt;Marker&gt; get waypoints =&gt; _globalKey._waypoints;</code></pre>
+</section>
+
+</section>
+
+
+        
+<section id="setter">
+
+<section class="multi-line-signature">
+  <span class="returntype">void</span>
+  <span class="name ">waypoints=</span><span class="signature">(<wbr><span class="parameter" id="waypoints=-param-waypoints"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/flutter_map/0.12.0/flutter_map.plugin_api/Marker-class.html">Marker</a></span>&gt;</span></span> <span class="parameter-name">waypoints</span></span>)</span>
+  
+
+</section>
+
+
+<section class="desc markdown">
+  <p>sets the waypoints of the <em>memory path</em> on the map <strong>and</strong> recalculates the route in between</p>
+</section>
+
+
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">set waypoints(List&lt;Marker&gt; waypoints) =&gt; _globalKey.setWaypoints(waypoints);</code></pre>
+</section>
+
+</section>
+
+  </div> <!-- /.main-content -->
+
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
     <header id="header-search-sidebar" class="hidden-l">
-      <form class="search-sidebar" role="search">
-        <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
-      </form>
-    </header>
-    
-    <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-      <li><a href="../../index.html">map_api</a></li>
-      <li><a href="../../map_api/map_api-library.html">map_api</a></li>
-      <li><a href="../../map_api/MapViewController-class.html">MapViewController</a></li>
-      <li class="self-crumb">waypoints property</li>
-    </ol>
-    
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">map_api</a></li>
+  <li><a href="../../map_api/map_api-library.html">map_api</a></li>
+  <li><a href="../../map_api/MapViewController-class.html">MapViewController</a></li>
+  <li class="self-crumb">waypoints property</li>
+</ol>
+
+
     <h5>MapViewController class</h5>
     <ol>
 
@@ -83,46 +143,6 @@
 
   </div><!--/.sidebar-offcanvas-->
 
-  <div id="dartdoc-main-content" class="main-content">
-      <div><h1><span class="kind-property">waypoints</span> property </h1></div>
-
-
-        <section id="getter">
-        
-        <section class="multi-line-signature">
-          <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/flutter_map/0.11.0/flutter_map.plugin_api/Marker-class.html">Marker</a></span>&gt;</span></span>
-                  <span class="name ">waypoints</span>
-          
-</section>
-        
-                <section class="desc markdown">
-          <p>fetches the current waypoints displayed on the map</p>
-        </section>
-                <section class="summary source-code" id="source">
-          <h2><span>Implementation</span></h2>
-          <pre class="language-dart"><code class="language-dart">List&lt;Marker&gt; get waypoints =&gt; _globalKey._waypoints;</code></pre>
-        </section>
-</section>
-        
-        <section id="setter">
-        
-        <section class="multi-line-signature">
-          <span class="returntype">void</span>
-                    <span class="name ">waypoints=</span>
-<span class="signature">(<wbr><span class="parameter" id="waypoints=-param-waypoints"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/flutter_map/0.11.0/flutter_map.plugin_api/Marker-class.html">Marker</a></span>&gt;</span></span> <span class="parameter-name">waypoints</span></span>)</span>
-                  
-</section>
-        
-                <section class="desc markdown">
-          <p>sets the waypoints of the <em>memory path</em> on the map <strong>and</strong> recalculates the route in between</p>
-        </section>
-                <section class="summary source-code" id="source">
-          <h2><span>Implementation</span></h2>
-          <pre class="language-dart"><code class="language-dart">set waypoints(List&lt;Marker&gt; waypoints) =&gt; _globalKey.setWaypoints(waypoints);</code></pre>
-        </section>
-</section>
-          </div> <!-- /.main-content -->
-
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->
 
@@ -134,14 +154,16 @@
       1.0.0+1
   </span>
 
+  
 </footer>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="../../static-assets/typeahead.bundle.min.js"></script>
+
 <script src="../../static-assets/highlight.pack.js"></script>
 <script src="../../static-assets/script.js"></script>
+
 
 
 </body>
 
 </html>
+
