@@ -34,8 +34,8 @@ class MapBoxApi {
     final String waypoints = points
         .map((e) => e.longitude.toString() + ',' + e.latitude.toString())
         .join(';');
-    final response = await get(
-        'https://api.mapbox.com/directions/v5/mapbox/walking/$waypoints?alternatives=false&geometries=geojson&steps=false&overview=full&access_token=$apiKey');
+    final response = await get(Uri.parse(
+        'https://api.mapbox.com/directions/v5/mapbox/walking/$waypoints?alternatives=false&geometries=geojson&steps=false&overview=full&access_token=$apiKey'));
     final json = jsonDecode(response.body);
     if (json['code'] != "Ok")
       throw "Error in MapBox API response:\n${response.body}";
