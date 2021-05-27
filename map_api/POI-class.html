@@ -12,9 +12,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="../static-assets/github.css">
-  <link rel="stylesheet" href="../static-assets/styles.css">
-  <link rel="icon" href="../static-assets/favicon.png">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
 
   
 </head>
@@ -44,6 +45,7 @@
   <div id="dartdoc-main-content" class="main-content">
       <div>
 <h1><span class="kind-class">POI</span> class 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
 </h1></div>
 
@@ -59,7 +61,7 @@
 
       <dl class="constructor-summary-list">
         <dt id="POI" class="callable">
-          <span class="name"><a href="../map_api/POI/POI.html">POI</a></span><span class="signature">(<span class="parameter" id="-param-label">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span>, </span><span class="parameter" id="-param-location"><span class="type-annotation"><a href="https://pub.dev/documentation/latlong/0.6.1/latlong/LatLng-class.html">LatLng</a></span> <span class="parameter-name">location</span>, </span><span class="parameter" id="-param-onTap"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Function-class.html">Function</a></span> <span class="parameter-name">onTap</span>}</span>)</span>
+          <span class="name"><a href="../map_api/POI/POI.html">POI</a></span><span class="signature">(<span class="parameter" id="-param-label">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span>, </span><span class="parameter" id="-param-location"><span>required</span> <span class="type-annotation"><a href="https://pub.dev/documentation/latlong/0.6.1/latlong/LatLng-class.html">LatLng</a></span> <span class="parameter-name">location</span>, </span><span class="parameter" id="-param-onTap"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Function-class.html">Function</a>?</span> <span class="parameter-name">onTap</span>}</span>)</span>
         </dt>
         <dd>
            
@@ -106,7 +108,7 @@
 
         <dt id="onTap" class="property">
   <span class="name"><a href="../map_api/POI/onTap.html">onTap</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Function-class.html">Function</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Function-class.html">Function</a>?</span> 
 
 </dt>
 <dd>
@@ -146,7 +148,7 @@
 </dd>
 
         <dt id="toMarker" class="callable">
-  <span class="name"><a href="../map_api/POI/toMarker.html">toMarker</a></span><span class="signature">(<wbr><span class="parameter" id="toMarker-param-context">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>}</span>)
+  <span class="name"><a href="../map_api/POI/toMarker.html">toMarker</a></span><span class="signature">(<wbr><span class="parameter" id="toMarker-param-context">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a>?</span> <span class="parameter-name">context</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/flutter_map/0.12.0/flutter_map.plugin_api/Marker-class.html">Marker</a></span>
   </span>
   
@@ -278,8 +280,9 @@
 </footer>
 
 
-<script src="../static-assets/highlight.pack.js"></script>
-<script src="../static-assets/script.js"></script>
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/script.js?v1"></script>
 
 
 
