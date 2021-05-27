@@ -4,7 +4,7 @@ description: Demonstration of Flutter's map capabilities.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -12,13 +12,8 @@ dependencies:
 
   flutter_map: ^0.12.0
   latlong: ^0.6.1
-  flutter_map_marker_cluster: any
-  user_location: any
-  flutter_map_tappable_polyline: any
-  lat_lon_grid_plugin: any
-  flutter_map_marker_popup: any
-  map_elevation: any
-  http: any
+  flutter_map_location: ^0.10.0
+  http: ^0.13.3
 
 dependency_overrides:
   flutter_map: ^0.12.0
@@ -28,7 +23,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  dartdoc: ^0.43.0
+  dartdoc: ^0.44.0
 
 flutter:
   uses-material-design: true

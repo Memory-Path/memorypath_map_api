@@ -9,7 +9,7 @@ import 'package:latlong/latlong.dart';
 ///
 /// Access later by using `MapBoxApi.instance`.
 class MapBoxApi {
-  static MapBoxApi _current;
+  static MapBoxApi? _current;
 
   /// initializes the [MapBoxApi] with the given API key
   static void init(String apiKey) {
@@ -17,7 +17,7 @@ class MapBoxApi {
   }
 
   /// returns the currently initialized [MapBoxApi] or throws an error if unavailable
-  static MapBoxApi get instance {
+  static MapBoxApi? get instance {
     if (_current == null)
       throw "MapBoxApi not initialized yet.\nRun `MapBoxApi.init(\"YOUR_API_KEY\");` in the main() function.";
     return _current;

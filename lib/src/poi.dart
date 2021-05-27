@@ -11,12 +11,12 @@ class POI {
   final LatLng location;
 
   /// a handler for user interaction
-  final Function onTap;
+  final Function? onTap;
 
-  POI({this.label, this.location, this.onTap});
+  POI({required this.label, required this.location, this.onTap});
 
   /// renders the POI as [Marker] for use on a map
-  Marker toMarker({BuildContext context}) => Marker(
+  Marker toMarker({BuildContext? context}) => Marker(
         point: location,
         width: 32,
         height: 32,
@@ -30,7 +30,7 @@ class POI {
               //color: color,
             ),
             tooltip: label,
-            onPressed: onTap ?? () {}, // preventing grayed button
+            onPressed: onTap as void Function()? ?? () {}, // preventing grayed button
           );
         },
       );
