@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong/latlong.dart';
+import 'package:latlong2/latlong.dart';
 
 /// A [POI] is a point of interest to be displayed on a map
 class POI {
@@ -30,7 +30,8 @@ class POI {
               //color: color,
             ),
             tooltip: label,
-            onPressed: onTap as void Function()? ?? () {}, // preventing grayed button
+            onPressed:
+                onTap as void Function()? ?? () {}, // preventing grayed button
           );
         },
       );

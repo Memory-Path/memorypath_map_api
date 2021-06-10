@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location/flutter_map_location.dart';
-import 'package:latlong/latlong.dart';
+import 'package:latlong2/latlong.dart';
 
 import 'mapbox_api.dart';
 
@@ -59,42 +59,43 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
     if (widget.controller != null) widget.controller!._key = this;
     if (widget.showLocationButton)
       userLocationOptions = LocationOptions(
-          onLocationUpdate: (LatLngData ld) {},
-          onLocationRequested: (LatLngData ld) {
-            if (ld.location == null) {
-              return;
-            }
-            mapController.move(ld.location, 16.0);
-          },
-          buttonBuilder: (BuildContext context,
-              ValueNotifier<LocationServiceStatus> status, Function onPressed) {
-            return Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0, right: 16.0),
-                  child: FloatingActionButton(
-                      child: ValueListenableBuilder<LocationServiceStatus>(
-                          valueListenable: status,
-                          builder: (BuildContext context,
-                              LocationServiceStatus value, Widget? child) {
-                            switch (value) {
-                              case LocationServiceStatus.disabled:
-                              case LocationServiceStatus.permissionDenied:
-                              case LocationServiceStatus.unsubscribed:
-                                return const Icon(
-                                  Icons.location_disabled,
-                                  color: Colors.white,
-                                );
-                              default:
-                                return const Icon(
-                                  Icons.location_searching,
-                                  color: Colors.white,
-                                );
-                            }
-                          }),
-                      onPressed: () => onPressed()),
-                ));
-          });
+        (BuildContext context, ValueNotifier<LocationServiceStatus> status,
+            Function onPressed) {
+          return Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 16.0, right: 16.0),
+                child: FloatingActionButton(
+                    child: ValueListenableBuilder<LocationServiceStatus>(
+                        valueListenable: status,
+                        builder: (BuildContext context,
+                            LocationServiceStatus value, Widget? child) {
+                          switch (value) {
+                            case LocationServiceStatus.disabled:
+                            case LocationServiceStatus.permissionDenied:
+                            case LocationServiceStatus.unsubscribed:
+                              return const Icon(
+                                Icons.location_disabled,
+                                color: Colors.white,
+                              );
+                            default:
+                              return const Icon(
+                                Icons.location_searching,
+                                color: Colors.white,
+                              );
+                          }
+                        }),
+                    onPressed: () => onPressed()),
+              ));
+        },
+        onLocationUpdate: (LatLngData? ld) {},
+        onLocationRequested: (LatLngData? ld) {
+          if (ld == null) {
+            return;
+          }
+          mapController.move(ld.location, 16.0);
+        },
+      );
     _waypoints = widget.waypoints;
     if (_waypoints!.length >= 2) calculateRoute();
     super.initState();
@@ -104,8 +105,8 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
   Widget build(BuildContext context) {
     return FlutterMap(
       options: MapOptions(
-        onTap: widget.onTap!,
-        onLongPress: widget.onLongPress!,
+        onTap: widget.onTap,
+        onLongPress: widget.onLongPress,
         bounds: LatLngBounds.fromPoints(_waypoints!.isNotEmpty
             ? _waypoints!.map((e) => e.point).toList()
             : [LatLng(40, 3), LatLng(60, 25)]),
@@ -124,7 +125,7 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
             Polyline(
                 points: directions!.points,
                 strokeWidth: 4,
-                color: Theme.of(context).accentColor)
+                color: Theme.of(context).colorScheme.secondary)
           ]),
         new MarkerLayerOptions(
           markers: _waypoints!,
@@ -146,7 +147,7 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
 
   Future<void> calculateRoute() async {
     final List<LatLng> points = _waypoints!.map((e) => e.point).toList();
-    directions = await MapBoxApi.instance!.directions(points);
+    directions = await MapBoxApi.instance.directions(points);
     setState(() {
       displayDirections = true;
     });

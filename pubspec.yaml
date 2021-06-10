@@ -10,20 +10,19 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_map: ^0.12.0
-  latlong: ^0.6.1
-  flutter_map_location: ^0.10.0
+  flutter_map: ^0.13.1
+  latlong2: ^0.8.0
+  flutter_map_location: ^0.12.0
   http: ^0.13.3
 
 dependency_overrides:
-  flutter_map: ^0.12.0
   logging: ^1.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  dartdoc: ^0.44.0
+  dartdoc: ^0.45.0
 
 flutter:
   uses-material-design: true

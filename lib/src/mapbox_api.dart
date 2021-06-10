@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:latlong/latlong.dart';
+import 'package:latlong2/latlong.dart';
 
 /// draft of an implementation of the MapBox directions API
 ///
@@ -9,7 +9,7 @@ import 'package:latlong/latlong.dart';
 ///
 /// Access later by using `MapBoxApi.instance`.
 class MapBoxApi {
-  static MapBoxApi? _current;
+  static late MapBoxApi _current;
 
   /// initializes the [MapBoxApi] with the given API key
   static void init(String apiKey) {
@@ -17,10 +17,12 @@ class MapBoxApi {
   }
 
   /// returns the currently initialized [MapBoxApi] or throws an error if unavailable
-  static MapBoxApi? get instance {
-    if (_current == null)
+  static MapBoxApi get instance {
+    try {
+      return _current;
+    } catch (e) {
       throw "MapBoxApi not initialized yet.\nRun `MapBoxApi.init(\"YOUR_API_KEY\");` in the main() function.";
-    return _current;
+    }
   }
 
   /// the API key used for remote API calls
