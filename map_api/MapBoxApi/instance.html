@@ -54,7 +54,7 @@
 <section id="getter">
 
 <section class="multi-line-signature">
-  <span class="returntype"><a href="../../map_api/MapBoxApi-class.html">MapBoxApi</a>?</span>
+  <span class="returntype"><a href="../../map_api/MapBoxApi-class.html">MapBoxApi</a></span>
   <span class="name ">instance</span>
   
 
@@ -68,10 +68,12 @@
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static MapBoxApi? get instance {
-  if (_current == null)
+  <pre class="language-dart"><code class="language-dart">static MapBoxApi get instance {
+  try {
+    return _current;
+  } catch (e) {
     throw &quot;MapBoxApi not initialized yet.\nRun `MapBoxApi.init(\&quot;YOUR_API_KEY\&quot;);` in the main() function.&quot;;
-  return _current;
+  }
 }</code></pre>
 </section>
 
