@@ -15,14 +15,11 @@ dependencies:
   flutter_map_location: ^0.12.0
   http: ^0.13.3
 
-dependency_overrides:
-  logging: ^1.0.1
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  dartdoc: ^0.45.0
+  dartdoc: ^1.0.2
 
 flutter:
   uses-material-design: true
