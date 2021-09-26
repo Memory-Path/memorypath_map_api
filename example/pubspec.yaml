@@ -13,8 +13,11 @@ dependencies:
 
   map_api:
     path: ../
-  flutter_map: ^0.13.1
-  latlong2: ^0.8.0
+  flutter_map: ^0.14.0
+  latlong2: ^0.8.1
+
+dependency_overrides:
+  flutter_map: ^0.14.0
 
 dev_dependencies:
   flutter_test:
