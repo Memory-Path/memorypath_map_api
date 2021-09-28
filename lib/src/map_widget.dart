@@ -105,8 +105,8 @@ class _MapViewState extends State<MapView> with KeepAliveParentDataMixin {
   Widget build(BuildContext context) {
     return FlutterMap(
       options: MapOptions(
-        onTap: widget.onTap,
-        onLongPress: widget.onLongPress,
+        onTap: (a, b) => widget.onTap?.call(b),
+        onLongPress: (a, b) => widget.onTap?.call(b),
         bounds: LatLngBounds.fromPoints(_waypoints!.isNotEmpty
             ? _waypoints!.map((e) => e.point).toList()
             : [LatLng(40, 3), LatLng(60, 25)]),
